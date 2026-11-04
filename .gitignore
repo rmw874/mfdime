@@ -1,0 +1,29 @@
+.*/
+*.md
+!/README.md
+*.html
+docs/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Downloaded inputs (sources in src/mfdime/config.py)
+data/
+weights/
+runs/
+logs/
+
+# Binaries, archives and env files
+.env
+.env.*
+*.env
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.npy
+*.tar
+*.tar.gz
+*.zip
+*.safetensors
+*.parquet

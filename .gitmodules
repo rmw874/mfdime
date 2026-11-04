@@ -1,0 +1,6 @@
+[submodule "third_party/dmf"]
+	path = third_party/dmf
+	url = https://github.com/kyungmnlee/dmf
+[submodule "third_party/fire"]
+	path = third_party/fire
+	url = https://github.com/Yan-Zen9/FiRe
