@@ -16,8 +16,8 @@ Choices (defaults in mfdime.config: 5 seeds, 16 photos, the dataset's gain):
 
 Output in --out-dir: images/<photo>_orig.png and images/<photo>_seed<k>_cf.png (256 px), manifest.jsonl (one row per
 explanation: photo, seed, peek, gain, target, the guide's answer before and after, flipped, the scale it took,
-generator calls, seconds), photos.json (how the photos were chosen), config.json, env.json and grid.jpg (originals,
-then each seed's counterfactual).
+generator calls, seconds), photos.json (how the photos were chosen), config.json, env.json and grid_<page>.jpg (64
+photos per page, each row the original, then each seed's counterfactual).
 """
 
 from __future__ import annotations
@@ -34,6 +34,8 @@ from torch import Tensor
 
 from mfdime import celebahq, config, dime, imagenet, setups
 from mfdime.common import batches, env_info, key_seed, predict, save_grid, save_png
+
+GRID_PHOTOS = 64  # photos per grid page: a JPEG is at most 65,500 px high, about 500 rows of thumbnails
 
 
 def prepare(args) -> tuple[setups.Setup, dime.Schedule]:
@@ -109,6 +111,14 @@ def counterfactuals(args, s: setups.Setup, ph: setups.Photos, arm: str, seeds: l
     return rows, per_seed
 
 
+def save_grids(x: Tensor, per_seed: list[Tensor], out_dir: Path) -> None:
+    """grid_<page>.jpg in out_dir, GRID_PHOTOS photos per page: each row the original, then each seed's
+    counterfactual."""
+    rows = [torch.stack([c[i] for c in (x, *per_seed)]) for i in range(len(x))]
+    for page, sl in enumerate(batches(len(rows), GRID_PHOTOS)):
+        save_grid(rows[sl], out_dir / f"grid_{page:02d}.jpg")
+
+
 def main(argv=None) -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     setups.add_args(p)
@@ -132,7 +142,7 @@ def main(argv=None) -> None:
     for i, name in enumerate(ph.names):
         save_png(ph.x[i], args.out_dir / "images" / f"{Path(name).stem}_orig.png")
     rows, per_seed = counterfactuals(args, s, ph, args.peek, args.seeds, sched, args.out_dir)
-    save_grid([torch.stack([c[i] for c in (ph.x, *per_seed)]) for i in range(len(ph.x))], args.out_dir / "grid.jpg")
+    save_grids(ph.x, per_seed, args.out_dir)
     print(f"{len(rows)} explanations, {np.mean([r['flipped'] for r in rows]):.0%} flipped, "
           f"{np.mean([r['generator_calls'] for r in rows]):.0f} generator calls and "
           f"{np.mean([r['seconds'] for r in rows]):.2f} s each -> {args.out_dir}")
