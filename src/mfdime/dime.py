@@ -39,7 +39,9 @@ CelebA-HQ), the same for every peek. DiME runs in fp16, ours in fp32.
 Only the peek differs between arms (peek): walk_rest (DiME's own: the remaining steps with fresh noise at each),
 euler_rest (the same remaining steps without noise: the flow's own path, the reference) and jump<N> (N flow-map jumps
 along that path). DiME's guided steps keep their noise in every arm, drawn per image, so arms pair image by image
-whatever the batch.
+whatever the batch. H2 additionally varies gradient_mode: shortcut (the original default) or exact (backpropagate
+through a jump look-ahead). In exact mode c(t)/(1-t)/c(s) times dL/dx_hat is replaced by c(t)/c(s) times dL/dz_t.
+The first step still uses the original image and the original shortcut in both modes. Neither mode normalises gradients.
 """
 
 from __future__ import annotations
@@ -159,6 +161,7 @@ class Peek:
 
     fn: Callable[[Tensor, int, Tensor], Tensor]
     calls: Callable[[int], int]
+    differentiable: bool = False  # only jump peeks are supported by H2's exact mode
 
 
 def walk_rest_peek(v: Callable[[Tensor, float], Tensor], grid: list[float], gen: torch.Generator) -> Peek:
@@ -179,7 +182,9 @@ def euler_rest_peek(v: flow.Velocity, grid: list[float]) -> Peek:
 
 def jump_peek(u: flow.MeanVelocity, grid: list[float], n: int) -> Peek:
     """Ours: n flow-map jumps from the current noise level to t = 0."""
-    return Peek(lambda z, k, v_z: flow.jump(u, z, grid[k], 0.0, n), lambda k: n)
+    if n < 1:
+        raise ValueError("jump count must be positive")
+    return Peek(lambda z, k, v_z: flow.jump(u, z, grid[k], 0.0, n), lambda k: n, differentiable=True)
 
 
 def peek(arm: str, v: flow.Velocity, u: flow.MeanVelocity, grid: list[float], gen: torch.Generator) -> Peek:
@@ -189,7 +194,10 @@ def peek(arm: str, v: flow.Velocity, u: flow.MeanVelocity, grid: list[float], ge
     if arm == "euler_rest":
         return euler_rest_peek(v, grid)
     if m := re.fullmatch(r"jump(\d+)", arm):
-        return jump_peek(u, grid, int(m.group(1)))
+        n = int(m.group(1))
+        if n < 1:
+            raise ValueError("jump count must be positive")
+        return jump_peek(u, grid, n)
     raise SystemExit(f"STOP: unknown peek {arm!r} (walk_rest, euler_rest, jump<N>)")
 
 
@@ -200,36 +208,66 @@ def noise_like(z: Tensor, gens: list[torch.Generator]) -> Tensor:
 
 def guided_run(v, peek: Peek, decode, clf, perc: Perceptual, x_img: Tensor, x_lat: Tensor, z_start: Tensor,
                target: Tensor, scale: float, grid: list[float], gens: list[torch.Generator],
-               use_logits: bool = False) -> tuple[Tensor, int]:
+               use_logits: bool = False, gradient_mode: str = "shortcut", trace: Callable[[dict], None] | None = None
+               ) -> tuple[Tensor, int]:
     """One DiME pass at one classifier scale (target: one class per image; gens: each image's step-noise generator):
     the final latent and the generator calls spent per image."""
-    z, x_hat, calls = z_start, x_lat, 0  # DiME's first nudge is taken on the original image (here: its latent)
+    if gradient_mode not in ("shortcut", "exact"):
+        raise ValueError(f"unknown gradient mode: {gradient_mode}")
+    if gradient_mode == "exact" and not peek.differentiable:
+        raise ValueError("exact mode currently supports jump<N> peeks only")
+    z, x_hat, calls = z_start.detach(), x_lat, 0  # first nudge: original image in both modes
     tgt = target.to(z.device)
     var_before = 0.0  # the step before's posterior variance, in the DDPM's coordinates
     for k, (t, s) in enumerate(zip(grid[:-1], grid[1:], strict=True)):
         with torch.no_grad():
             v_z = v(z, t)
             calls += 1
-            if k > 0:
+            if k > 0 and gradient_mode == "shortcut":
                 x_hat = peek.fn(z, k, v_z)
                 calls += peek.calls(k)
-        xh = x_hat.detach().requires_grad_(True)
+        full_gradient = gradient_mode == "exact" and k > 0
+        if full_gradient:
+            grad_input = z.detach().requires_grad_(True)
+            # Jump peeks do not use v_z. All jumps must remain connected to grad_input.
+            xh = peek.fn(grad_input, k, v_z)
+            calls += peek.calls(k)
+        else:
+            grad_input = xh = x_hat.detach().requires_grad_(True)
         img = decode(xh)
-        loss = scale * class_loss(clf(clamp_through(img)), tgt, use_logits) + perc(img, x_img)
-        g_hat = torch.autograd.grad(loss, xh)[0]
+        classification = class_loss(clf(clamp_through(img)), tgt, use_logits)
+        perceptual = perc(img, x_img)
+        loss = scale * classification + perceptual
+        g_hat = torch.autograd.grad(loss, grad_input)[0]
         c_t, c_s = vp_scale(t), vp_scale(s)
-        grad = (g_hat * c_t / (1 - t) + L1 * torch.sign(z / c_t - x_lat)) / c_s  # L1: d/dz of l1 * ||z - x||_1
+        # c_t/c_s converts the VP update to flow coordinates. Only the shortcut approximates the peek Jacobian
+        # by I/(1-t); applying that factor again to a full gradient would count the approximation twice.
+        signal = 1.0 if full_gradient else 1 - t
+        grad = (g_hat * c_t / signal + L1 * torch.sign(z / c_t - x_lat)) / c_s
         with torch.no_grad():
             mean, var = posterior(z, z - t * v_z, t, s)
-            mean = mean - (var if s > 0 else var_before * c_s ** 2) * grad
+            update = (var if s > 0 else var_before * c_s ** 2) * grad
+            mean = mean - update
             z = mean + (var ** 0.5) * noise_like(z, gens) if s > 0 else mean
             var_before = var / c_s ** 2
+            if trace is not None:
+                finite = all(bool(torch.isfinite(a).all()) for a in (loss, g_hat, grad, z))
+                if not finite:
+                    raise FloatingPointError(f"nonfinite guidance at step {k}, t={t}, mode={gradient_mode}")
+                trace({"step": k, "t": t, "scale": scale, "full_gradient": full_gradient, "finite": finite,
+                       "classification_loss_sum": float(classification), "perceptual_loss_sum": float(perceptual),
+                       "loss_sum": float(loss), "loss_gradient_l2": g_hat.flatten(1).norm(dim=1).tolist(),
+                       "guidance_l2": grad.flatten(1).norm(dim=1).tolist(),
+                       "update_l2": update.flatten(1).norm(dim=1).tolist()})
+        # Do not retain the previous jump/decoder graph while constructing the next one.
+        del grad_input, xh, img, loss, classification, perceptual, g_hat
     return z, calls
 
 
 def explain(v, peek: Peek, decode, clf, perc: Perceptual, x_img: Tensor, x_lat: Tensor, z_start: Tensor,
             target: Tensor | int, grid: list[float], gain: float, noise_keys: list[str], scales=SCALES,
-            use_logits: bool = False) -> tuple[Tensor, Tensor, Tensor]:
+            use_logits: bool = False, gradient_mode: str = "shortcut", trace: Callable[[dict], None] | None = None
+            ) -> tuple[Tensor, Tensor, Tensor]:
     """DiME's scale schedule: images not flipped at one scale are redone from the same noisy start at the next.
     target: one class for all images or one per image. noise_keys: one string per image (its photo and seed) that fixes
     its step noise at every scale, the same in every arm and batch. Returns (final latents, scale index used per image
@@ -242,8 +280,14 @@ def explain(v, peek: Peek, decode, clf, perc: Perceptual, x_img: Tensor, x_lat: 
         idx = todo.nonzero().flatten()
         dev = idx.to(z_start.device)
         gens = [torch.Generator().manual_seed(key_seed(f"{noise_keys[i]}:scale{j}")) for i in idx.tolist()]
+        active_keys = [noise_keys[i] for i in idx.tolist()]
+
+        def record(row: dict, active_keys=active_keys, j=j) -> None:
+            if trace is not None:
+                trace(row | {"noise_keys": active_keys, "scale_index": j})
+
         z, c = guided_run(v, peek, decode, clf, perc, x_img[dev], x_lat[dev], z_start[dev], target[idx], gain * s, grid,
-                          gens, use_logits)
+                          gens, use_logits, gradient_mode, record if trace is not None else None)
         out[dev], calls[idx] = z, calls[idx] + c
         with torch.no_grad():
             flipped = clf(decode(z).clamp(-1, 1)).argmax(1).cpu() == target[idx]

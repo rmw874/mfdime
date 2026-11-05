@@ -1,0 +1,78 @@
+{
+  "scope": "practice-only CelebA-HQ smile pilot: 16 original checks, 4 selected originals, seed 0",
+  "original_evaluator": {
+    "n": 16,
+    "accuracy": 0.875,
+    "classes": {
+      "0": {
+        "count": 10,
+        "recall": 1.0,
+        "predicted": 12
+      },
+      "1": {
+        "count": 6,
+        "recall": 0.6666666666666666,
+        "predicted": 4
+      }
+    },
+    "balanced_accuracy": 0.8333333333333333,
+    "confusion_true_rows_predicted_columns": [
+      [
+        10,
+        0
+      ],
+      [
+        2,
+        4
+      ]
+    ]
+  },
+  "arms": {
+    "jump1/exact": {
+      "n": 4,
+      "guide_successes": 3,
+      "openclip_successes": 1,
+      "mean_pixel_l1": 0.07219438347965479,
+      "mean_perceptual": 207.64181900024414,
+      "mean_seconds": 7.593249999999999,
+      "peak_allocated_gib": 3.231818675994873
+    },
+    "jump1/shortcut": {
+      "n": 4,
+      "guide_successes": 4,
+      "openclip_successes": 0,
+      "mean_pixel_l1": 0.10960152931511402,
+      "mean_perceptual": 229.13278579711914,
+      "mean_seconds": 7.53425,
+      "peak_allocated_gib": 3.1176013946533203
+    },
+    "jump4/exact": {
+      "n": 4,
+      "guide_successes": 4,
+      "openclip_successes": 1,
+      "mean_pixel_l1": 0.07256742846220732,
+      "mean_perceptual": 205.97080993652344,
+      "mean_seconds": 14.123000000000001,
+      "peak_allocated_gib": 3.5813064575195312
+    },
+    "jump4/shortcut": {
+      "n": 4,
+      "guide_successes": 4,
+      "openclip_successes": 0,
+      "mean_pixel_l1": 0.11580679751932621,
+      "mean_perceptual": 232.9241180419922,
+      "mean_seconds": 10.678749999999999,
+      "peak_allocated_gib": 3.1147937774658203
+    }
+  },
+  "findings": [
+    "Completion marker exists and final job 6221 stderr is empty. All four arms share the same four originals and seed 0; every executed scale has 60 finite steps.",
+    "OpenCLIP matches 14/16 original smile annotations: 10/10 non-smiling, 4/6 smiling. Balanced accuracy is 83.3%; this tiny practice set does not establish population accuracy.",
+    "For both jump counts the sole evaluator success is the same adding-smile edit, 4.jpg. Exact final smile margins are approximately +0.003, versus negative shortcut margins. This is one paired example, not independent evidence from two subjects.",
+    "No smile-removal edit flips OpenCLIP. The two smile-removal examples still appear smiling in every inspected grid, despite most satisfying the STEEX guide.",
+    "All four edit grids and the original-image sheet were inspected. No gross visual corruption was apparent. Exact arms have lower mean pixel L1 and weighted VGG perceptual distance than shortcut arms on this tiny sample.",
+    "Peak allocated GPU memory is at most 3.58 GiB. Mean generation time ranges from 7.53 to 14.12 seconds per explanation; image/evaluator scoring and setup are excluded.",
+    "The selected photos metadata retains guide_accuracy=0.9375 from the unfiltered 16-image practice pool; all four selected originals agree with guide, evaluator, and annotation."
+  ],
+  "recommendation": "OpenCLIP is a reasonable candidate independent evaluator for a larger face experiment, with fixed prompts and checkpoint. Report adding/removing smiles separately and include continuous target-directed cosine-margin changes alongside binary success. Do not infer H2 support or general evaluator reliability from this pilot."
+}

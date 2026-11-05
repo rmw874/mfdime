@@ -1,0 +1,165 @@
+{
+  "scope": "Five seeds on 12 practice photos; 240 explanations. Initial pilot excluded from pooled counts.",
+  "completed_tasks": 15,
+  "per_seed": {
+    "0": {
+      "jump1/shortcut": {
+        "n": 12,
+        "check_successes": 1,
+        "max_update_excluding_first_step": 6.936107635498047
+      },
+      "jump1/exact": {
+        "n": 12,
+        "check_successes": 1,
+        "max_update_excluding_first_step": 53.77809524536133
+      },
+      "jump4/shortcut": {
+        "n": 12,
+        "check_successes": 2,
+        "max_update_excluding_first_step": 6.871855735778809
+      },
+      "jump4/exact": {
+        "n": 12,
+        "check_successes": 1,
+        "max_update_excluding_first_step": 16.174287796020508
+      }
+    },
+    "1": {
+      "jump1/shortcut": {
+        "n": 12,
+        "check_successes": 2,
+        "max_update_excluding_first_step": 8.15066909790039
+      },
+      "jump1/exact": {
+        "n": 12,
+        "check_successes": 3,
+        "max_update_excluding_first_step": 38.21846389770508
+      },
+      "jump4/shortcut": {
+        "n": 12,
+        "check_successes": 2,
+        "max_update_excluding_first_step": 6.1592278480529785
+      },
+      "jump4/exact": {
+        "n": 12,
+        "check_successes": 2,
+        "max_update_excluding_first_step": 15.293102264404297
+      }
+    },
+    "2": {
+      "jump1/shortcut": {
+        "n": 12,
+        "check_successes": 3,
+        "max_update_excluding_first_step": 8.902399063110352
+      },
+      "jump1/exact": {
+        "n": 12,
+        "check_successes": 2,
+        "max_update_excluding_first_step": 24.49091339111328
+      },
+      "jump4/shortcut": {
+        "n": 12,
+        "check_successes": 3,
+        "max_update_excluding_first_step": 9.034643173217773
+      },
+      "jump4/exact": {
+        "n": 12,
+        "check_successes": 1,
+        "max_update_excluding_first_step": 11.053162574768066
+      }
+    },
+    "3": {
+      "jump1/shortcut": {
+        "n": 12,
+        "check_successes": 3,
+        "max_update_excluding_first_step": 9.01174259185791
+      },
+      "jump1/exact": {
+        "n": 12,
+        "check_successes": 2,
+        "max_update_excluding_first_step": 17.80317497253418
+      },
+      "jump4/shortcut": {
+        "n": 12,
+        "check_successes": 2,
+        "max_update_excluding_first_step": 8.881927490234375
+      },
+      "jump4/exact": {
+        "n": 12,
+        "check_successes": 2,
+        "max_update_excluding_first_step": 10.741415977478027
+      }
+    },
+    "4": {
+      "jump1/shortcut": {
+        "n": 12,
+        "check_successes": 3,
+        "max_update_excluding_first_step": 8.220216751098633
+      },
+      "jump1/exact": {
+        "n": 12,
+        "check_successes": 2,
+        "max_update_excluding_first_step": 20.063024520874023
+      },
+      "jump4/shortcut": {
+        "n": 12,
+        "check_successes": 2,
+        "max_update_excluding_first_step": 8.722400665283203
+      },
+      "jump4/exact": {
+        "n": 12,
+        "check_successes": 3,
+        "max_update_excluding_first_step": 10.077543258666992
+      }
+    }
+  },
+  "pooled": {
+    "jump1/shortcut": {
+      "n": 60,
+      "guide_successes": 57,
+      "check_successes": 12,
+      "pixel_l1_mean": 0.2366734951734543,
+      "perceptual_mean": 379.2561213175456,
+      "seconds_mean": 5.341733333333333,
+      "peak_allocated_gib": 7.448692321777344
+    },
+    "jump1/exact": {
+      "n": 60,
+      "guide_successes": 55,
+      "check_successes": 10,
+      "pixel_l1_mean": 0.2522444615761439,
+      "perceptual_mean": 404.31871337890624,
+      "seconds_mean": 7.607766666666667,
+      "peak_allocated_gib": 7.804693698883057
+    },
+    "jump4/shortcut": {
+      "n": 60,
+      "guide_successes": 58,
+      "check_successes": 11,
+      "pixel_l1_mean": 0.23619134550293286,
+      "perceptual_mean": 378.24892807006836,
+      "seconds_mean": 8.3515,
+      "peak_allocated_gib": 7.448692321777344
+    },
+    "jump4/exact": {
+      "n": 60,
+      "guide_successes": 57,
+      "check_successes": 9,
+      "pixel_l1_mean": 0.24468873714407285,
+      "perceptual_mean": 390.8052001953125,
+      "seconds_mean": 15.738416666666666,
+      "peak_allocated_gib": 8.828439712524414
+    }
+  },
+  "findings": [
+    "All 15 tasks have completion markers and correct seed identities; all stderr logs are empty. All recorded guidance steps are finite.",
+    "The same four practice photos per class pair were used across arms and seeds. There are 12 distinct photos, not 60 independent photos.",
+    "Exact evaluator success is 10/60 versus shortcut 12/60 for jump1, and 9/60 versus 11/60 for jump4. Each paired comparison has 3 gains and 5 losses.",
+    "The original jump4/exact seed-0 cheetah corruption and 183 update spike did not reproduce. However, visually corrupted jump1/exact cheetah edits occur in the seed-0 repeat and seed 1, with maximum update norms 53.78 and 38.22 respectively. All ten cheetah/exact grids were inspected.",
+    "Pooled image-change and perceptual distances are higher for exact than shortcut in both jump counts.",
+    "The seed-0 repeat changes evaluator predictions in all pairs except zebra jump4/exact; even shortcut outputs and some guide success outcomes change. Early losses begin identical, then small gradient differences grow. Numerical nondeterminism is a plausible contributor, not an established sole cause. Recorded metadata does not include code or weight hashes.",
+    "Zebra-to-sorrel has 0/20 evaluator successes in every arm. Preserve this observation rather than dropping the pair based on pilot performance.",
+    "Maximum allocated memory remains 8.83 GiB at batch one. There is no demonstrated need to increase batch size for feasibility."
+  ],
+  "recommendation": "Before held-out experiments, add a strict reproducibility mode (deterministic algorithms, cuDNN settings, cuBLAS workspace configuration, TF32 disabled) and record its settings plus code and weight identities. Perform one small identical seed-0 run twice on the same GPU model/software configuration. Diagnose unsupported deterministic operations explicitly. Preserve the raw-gradient primary comparison; any norm-matched experiment must be a separately defined sensitivity comparison. Do not rerun all seeds simply to seek a positive H2 result."
+}

@@ -11,9 +11,17 @@ N_PHOTOS = 16  # photos per run (--n)
 BATCH = 8
 GAIN = {"imagenet": 1.0, "celebahq": 3.0}
 PEEK = "jump1"
+H2_PAIRS = ((340, 339), (293, 286), (285, 283))
+H2_ARMS = (("jump1", "shortcut"), ("jump1", "exact"), ("jump4", "shortcut"), ("jump4", "exact"))
+H2_SEED_GROUPS = ((0, 1), (2, 3), (4,))
 
 IMAGENET_SOURCE, IMAGENET_TARGET = 340, 339  # zebra -> sorrel, the first of ACE's ImageNet pairs
 ATTRIBUTE = "smile"  # the CelebA-HQ attribute: STEEX's classifier output and the pMF checkpoint's classes
+
+# H2's login-node downloader uses these pinned sources, with the paths below.
+DMF_HF_REPO, DMF_REV = "kyungmnlee/DMF", "4b040eb1ed1e3f9e1d01dd89d499f720296fba98"
+VAE_HF_REPO, VAE_REV = "stabilityai/sd-vae-ft-ema", "f04b2c4b98319346dad8c65879f680b1997b204a"
+IMAGENET_HF_REPO, IMAGENET_REV = "ILSVRC/imagenet-1k", "49e2ee26f3810fb5a7536bbf732a7b07389a47b5"
 
 # Where the downloads live, and where each comes from. Hugging Face items download with
 #   uv run hf download <repo> [files] --revision <rev> --local-dir <dir>

@@ -1,0 +1,454 @@
+{
+  "scope": "12 practice photos, seed 0, four arms; descriptive pilot only",
+  "pairs": {
+    "285_283": {
+      "purpose": "practice-only feasibility pilot",
+      "arms": {
+        "jump1/shortcut": {
+          "explanations": 4,
+          "guide_success": 1.0,
+          "check_success": 0.0,
+          "joint_success": 0.0,
+          "seconds": 4.46275,
+          "pixel_l1": 0.20502854883670807,
+          "perceptual": 385.4579315185547,
+          "peak_allocated_gib": 7.448677062988281,
+          "scale_counts": {
+            "8.0": 4,
+            "10.0": 0,
+            "15.0": 0,
+            "None": 0
+          },
+          "all_steps_finite": true,
+          "trace_records": 240,
+          "loss_gradient_l2": {
+            "mean": 58.05616610050201,
+            "max": 280.86785888671875
+          },
+          "guidance_l2": {
+            "mean": 96.89139828681945,
+            "max": 614.4464721679688
+          },
+          "update_l2": {
+            "mean": 0.9536189822965147,
+            "max": 7.567605018615723
+          }
+        },
+        "jump1/exact": {
+          "explanations": 4,
+          "guide_success": 1.0,
+          "check_success": 0.0,
+          "joint_success": 0.0,
+          "seconds": 7.620749999999999,
+          "pixel_l1": 0.2100706696510315,
+          "perceptual": 387.76353454589844,
+          "peak_allocated_gib": 7.804678440093994,
+          "scale_counts": {
+            "8.0": 4,
+            "10.0": 0,
+            "15.0": 0,
+            "None": 0
+          },
+          "all_steps_finite": true,
+          "trace_records": 240,
+          "loss_gradient_l2": {
+            "mean": 72.45978363355,
+            "max": 1183.390625
+          },
+          "guidance_l2": {
+            "mean": 76.28584535121918,
+            "max": 1184.304931640625
+          },
+          "update_l2": {
+            "mean": 0.70598349760985,
+            "max": 13.645218849182129
+          }
+        },
+        "jump4/shortcut": {
+          "explanations": 4,
+          "guide_success": 1.0,
+          "check_success": 0.25,
+          "joint_success": 0.25,
+          "seconds": 6.4190000000000005,
+          "pixel_l1": 0.20381250232458115,
+          "perceptual": 382.8212585449219,
+          "peak_allocated_gib": 7.448677062988281,
+          "scale_counts": {
+            "8.0": 4,
+            "10.0": 0,
+            "15.0": 0,
+            "None": 0
+          },
+          "all_steps_finite": true,
+          "trace_records": 240,
+          "loss_gradient_l2": {
+            "mean": 58.00381344954173,
+            "max": 269.3958435058594
+          },
+          "guidance_l2": {
+            "mean": 94.41119091510772,
+            "max": 589.1769409179688
+          },
+          "update_l2": {
+            "mean": 0.8974771130286778,
+            "max": 7.5677995681762695
+          }
+        },
+        "jump4/exact": {
+          "explanations": 4,
+          "guide_success": 1.0,
+          "check_success": 0.25,
+          "joint_success": 0.25,
+          "seconds": 17.38175,
+          "pixel_l1": 0.21135102957487106,
+          "perceptual": 392.7413558959961,
+          "peak_allocated_gib": 8.828439712524414,
+          "scale_counts": {
+            "8.0": 4,
+            "10.0": 0,
+            "15.0": 0,
+            "None": 0
+          },
+          "all_steps_finite": true,
+          "trace_records": 240,
+          "loss_gradient_l2": {
+            "mean": 65.46844108899434,
+            "max": 437.38214111328125
+          },
+          "guidance_l2": {
+            "mean": 69.43184611002604,
+            "max": 437.691650390625
+          },
+          "update_l2": {
+            "mean": 0.6688490380746468,
+            "max": 7.567862033843994
+          }
+        }
+      },
+      "comparisons": {
+        "jump1": {
+          "check_success_difference_exact_minus_shortcut": 0.0
+        },
+        "jump4": {
+          "check_success_difference_exact_minus_shortcut": 0.0
+        }
+      }
+    },
+    "293_286": {
+      "purpose": "practice-only feasibility pilot",
+      "arms": {
+        "jump1/shortcut": {
+          "explanations": 4,
+          "guide_success": 1.0,
+          "check_success": 0.25,
+          "joint_success": 0.25,
+          "seconds": 4.099,
+          "pixel_l1": 0.24750138446688652,
+          "perceptual": 305.20327377319336,
+          "peak_allocated_gib": 7.448677062988281,
+          "scale_counts": {
+            "8.0": 4,
+            "10.0": 0,
+            "15.0": 0,
+            "None": 0
+          },
+          "all_steps_finite": true,
+          "trace_records": 240,
+          "loss_gradient_l2": {
+            "mean": 62.701385736465454,
+            "max": 229.8292694091797
+          },
+          "guidance_l2": {
+            "mean": 104.06791965961456,
+            "max": 481.6409606933594
+          },
+          "update_l2": {
+            "mean": 1.0163694509246852,
+            "max": 8.030730247497559
+          }
+        },
+        "jump1/exact": {
+          "explanations": 4,
+          "guide_success": 1.0,
+          "check_success": 0.5,
+          "joint_success": 0.5,
+          "seconds": 4.7627500000000005,
+          "pixel_l1": 0.2526153475046158,
+          "perceptual": 314.47320556640625,
+          "peak_allocated_gib": 7.804678440093994,
+          "scale_counts": {
+            "8.0": 4,
+            "10.0": 0,
+            "15.0": 0,
+            "None": 0
+          },
+          "all_steps_finite": true,
+          "trace_records": 240,
+          "loss_gradient_l2": {
+            "mean": 76.87917980353038,
+            "max": 778.1249389648438
+          },
+          "guidance_l2": {
+            "mean": 80.42454475561777,
+            "max": 778.8400268554688
+          },
+          "update_l2": {
+            "mean": 0.7648445705533959,
+            "max": 8.9735689163208
+          }
+        },
+        "jump4/shortcut": {
+          "explanations": 4,
+          "guide_success": 1.0,
+          "check_success": 0.25,
+          "joint_success": 0.25,
+          "seconds": 6.5325,
+          "pixel_l1": 0.24615277349948883,
+          "perceptual": 302.12887954711914,
+          "peak_allocated_gib": 7.448677062988281,
+          "scale_counts": {
+            "8.0": 4,
+            "10.0": 0,
+            "15.0": 0,
+            "None": 0
+          },
+          "all_steps_finite": true,
+          "trace_records": 240,
+          "loss_gradient_l2": {
+            "mean": 58.89749817848205,
+            "max": 216.6214141845703
+          },
+          "guidance_l2": {
+            "mean": 97.35827660560608,
+            "max": 462.5015563964844
+          },
+          "update_l2": {
+            "mean": 0.948361449308383,
+            "max": 8.030644416809082
+          }
+        },
+        "jump4/exact": {
+          "explanations": 4,
+          "guide_success": 1.0,
+          "check_success": 0.5,
+          "joint_success": 0.5,
+          "seconds": 9.9545,
+          "pixel_l1": 0.3166632130742073,
+          "perceptual": 362.9101867675781,
+          "peak_allocated_gib": 8.828439712524414,
+          "scale_counts": {
+            "8.0": 4,
+            "10.0": 0,
+            "15.0": 0,
+            "None": 0
+          },
+          "all_steps_finite": true,
+          "trace_records": 240,
+          "loss_gradient_l2": {
+            "mean": 101.36675213177999,
+            "max": 10954.123046875
+          },
+          "guidance_l2": {
+            "mean": 105.12918229897817,
+            "max": 10965.462890625
+          },
+          "update_l2": {
+            "mean": 1.315302995875633,
+            "max": 183.11878967285156
+          }
+        }
+      },
+      "comparisons": {
+        "jump1": {
+          "check_success_difference_exact_minus_shortcut": 0.25
+        },
+        "jump4": {
+          "check_success_difference_exact_minus_shortcut": 0.25
+        }
+      }
+    },
+    "340_339": {
+      "purpose": "practice-only feasibility pilot",
+      "arms": {
+        "jump1/shortcut": {
+          "explanations": 4,
+          "guide_success": 0.75,
+          "check_success": 0.0,
+          "joint_success": 0.0,
+          "seconds": 8.10175,
+          "pixel_l1": 0.258232980966568,
+          "perceptual": 453.1479949951172,
+          "peak_allocated_gib": 7.448692321777344,
+          "scale_counts": {
+            "8.0": 2,
+            "10.0": 0,
+            "15.0": 1,
+            "None": 1
+          },
+          "all_steps_finite": true,
+          "trace_records": 480,
+          "loss_gradient_l2": {
+            "mean": 97.8179839849472,
+            "max": 285.5633544921875
+          },
+          "guidance_l2": {
+            "mean": 153.2457243601481,
+            "max": 624.5835571289062
+          },
+          "update_l2": {
+            "mean": 1.3535511182601718,
+            "max": 10.755528450012207
+          }
+        },
+        "jump1/exact": {
+          "explanations": 4,
+          "guide_success": 0.75,
+          "check_success": 0.0,
+          "joint_success": 0.0,
+          "seconds": 8.357,
+          "pixel_l1": 0.2848108820617199,
+          "perceptual": 491.9888381958008,
+          "peak_allocated_gib": 7.804693698883057,
+          "scale_counts": {
+            "8.0": 2,
+            "10.0": 1,
+            "15.0": 0,
+            "None": 1
+          },
+          "all_steps_finite": true,
+          "trace_records": 420,
+          "loss_gradient_l2": {
+            "mean": 91.58101457868304,
+            "max": 1859.3160400390625
+          },
+          "guidance_l2": {
+            "mean": 94.84075920468285,
+            "max": 1861.086181640625
+          },
+          "update_l2": {
+            "mean": 0.8394129076019107,
+            "max": 21.442895889282227
+          }
+        },
+        "jump4/shortcut": {
+          "explanations": 4,
+          "guide_success": 0.75,
+          "check_success": 0.0,
+          "joint_success": 0.0,
+          "seconds": 13.238000000000001,
+          "pixel_l1": 0.2584434114396572,
+          "perceptual": 448.69287872314453,
+          "peak_allocated_gib": 7.448692321777344,
+          "scale_counts": {
+            "8.0": 2,
+            "10.0": 0,
+            "15.0": 1,
+            "None": 1
+          },
+          "all_steps_finite": true,
+          "trace_records": 480,
+          "loss_gradient_l2": {
+            "mean": 103.00505296389262,
+            "max": 370.835205078125
+          },
+          "guidance_l2": {
+            "mean": 161.03902215162913,
+            "max": 619.4228515625
+          },
+          "update_l2": {
+            "mean": 1.4130053855963827,
+            "max": 10.755348205566406
+          }
+        },
+        "jump4/exact": {
+          "explanations": 4,
+          "guide_success": 1.0,
+          "check_success": 0.0,
+          "joint_success": 0.0,
+          "seconds": 19.94025,
+          "pixel_l1": 0.26426853612065315,
+          "perceptual": 442.05736541748047,
+          "peak_allocated_gib": 8.828439712524414,
+          "scale_counts": {
+            "8.0": 1,
+            "10.0": 2,
+            "15.0": 1,
+            "None": 0
+          },
+          "all_steps_finite": true,
+          "trace_records": 480,
+          "loss_gradient_l2": {
+            "mean": 90.14335323969523,
+            "max": 1070.451904296875
+          },
+          "guidance_l2": {
+            "mean": 93.3626521507899,
+            "max": 1071.556396484375
+          },
+          "update_l2": {
+            "mean": 0.7981661278560447,
+            "max": 12.346161842346191
+          }
+        }
+      },
+      "comparisons": {
+        "jump1": {
+          "check_success_difference_exact_minus_shortcut": 0.0
+        },
+        "jump4": {
+          "check_success_difference_exact_minus_shortcut": 0.0
+        }
+      }
+    }
+  },
+  "pooled": {
+    "jump1/shortcut": {
+      "n": 12,
+      "guide_successes": 11,
+      "evaluator_successes": 1,
+      "mean_seconds": 5.5545,
+      "mean_pixel_l1": 0.23692097142338753,
+      "mean_perceptual": 381.2697334289551,
+      "peak_allocated_gib": 7.448692321777344
+    },
+    "jump1/exact": {
+      "n": 12,
+      "guide_successes": 11,
+      "evaluator_successes": 2,
+      "mean_seconds": 6.9135,
+      "mean_pixel_l1": 0.24916563307245573,
+      "mean_perceptual": 398.07519276936847,
+      "peak_allocated_gib": 7.804693698883057
+    },
+    "jump4/shortcut": {
+      "n": 12,
+      "guide_successes": 11,
+      "evaluator_successes": 2,
+      "mean_seconds": 8.729833333333334,
+      "mean_pixel_l1": 0.23613622908790907,
+      "mean_perceptual": 377.88100560506183,
+      "peak_allocated_gib": 7.448692321777344
+    },
+    "jump4/exact": {
+      "n": 12,
+      "guide_successes": 12,
+      "evaluator_successes": 3,
+      "mean_seconds": 15.758833333333333,
+      "mean_pixel_l1": 0.2640942595899105,
+      "mean_perceptual": 399.2363026936849,
+      "peak_allocated_gib": 8.828439712524414
+    }
+  },
+  "findings": [
+    "All three completion markers exist. All three stderr logs are empty. All logged steps are finite.",
+    "All arm manifests cover the same four photo identities and seed within each pair; every completed scale has 60 steps.",
+    "All 12 grids were inspected. A jump4/exact edit of ILSVRC2012_val_00001060_n02130308.JPEG is visibly corrupted.",
+    "For that edit, scale index 0, step index 2, t=0.5372065: guidance update L2=183.1188, versus 4.4349 in the shortcut trajectory at that step. The states already differ, so this ratio is descriptive, not a same-state Jacobian comparison.",
+    "The corrupted edit is counted as a guide target success but not an independent-evaluator target success.",
+    "Both exact arms add one evaluator success over their shortcut counterpart, all from the cheetah pair. Twelve practice photos and one seed cannot establish H2.",
+    "Pooled pixel L1 and perceptual distances are higher for both exact arms. Do not infer improved visual realism from pilot success counts.",
+    "First-step losses match exactly across arms; first-step guidance/update norm relative spreads are below 0.000072. GPU floating-point results are not bit-identical.",
+    "The cluster logs report A100-PCIE-40GB hardware, not a 32GB GPU. Maximum measured allocated memory is 8.83 GiB at batch one."
+  ],
+  "recommendation": "Keep the unnormalised four-arm experiment definition. Before final held-out runs, reproduce the corrupted practice case at seed 0 and inspect additional practice seeds. Consider a separately labelled norm-matched sensitivity arm if instability persists; do not silently stabilise only failing samples. Audit held-out evaluator eligibility before fixing final sample size."
+}

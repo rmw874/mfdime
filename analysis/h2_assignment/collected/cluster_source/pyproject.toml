@@ -1,0 +1,58 @@
+[project]
+name = "mfdime"
+version = "0.1.0"
+description = "DiME counterfactual explanations with a flow-map look-ahead"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "torch==2.8.0",
+    "torchvision==0.23.0",
+    "diffusers",
+    "timm",
+    "pyarrow",
+    "pillow",
+    "numpy",
+    "accelerate>=1.15.0",
+    "pytorch-fid>=0.3.0",
+]
+
+[dependency-groups]
+faces = [
+    "open_clip_torch==3.2.0",
+]
+dev = [
+    "ruff",
+    "ty>=0.0.95",
+]
+
+[tool.uv]
+# Not installed: the package is imported from src/ through PYTHONPATH (Makefile, job scripts).
+package = false
+
+# torch 2.8.0 is the DMF authors' version; the cu126 build is used locally and on Hendrix alike.
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+torchvision = { index = "pytorch-cu126" }
+
+[tool.ruff]
+line-length = 140
+target-version = "py312"
+extend-exclude = ["results", "third_party"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B"]
+ignore = ["E702"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["mfdime"]
+
+[tool.ty.src]
+exclude = ["third_party", "results", "runs"]
+
+[tool.ty.rules]
+# torch declares nn.Module.forward as an attribute, so every module's forward method reads as an invalid override
+invalid-mutable-override = "ignore"

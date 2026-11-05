@@ -1,0 +1,930 @@
+{
+  "scope": "held_out",
+  "photos": 71,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "bootstrap_draws": 5000,
+  "bootstrap_seed": 0,
+  "weighting": "equal weight per photo; seeds averaged; photos resampled within class pair",
+  "arms": {
+    "jump1/shortcut": {
+      "explanations": 355,
+      "distinct_photos": 71,
+      "guide_success": 0.9690140845070423,
+      "check_success": 0.09859154929577464,
+      "joint_success": 0.09859154929577464,
+      "check_success_among_guide_successes": 0.10174418604651163,
+      "numerical_failures": 0,
+      "check_success_per_seed": [
+        0.09859154929577464,
+        0.08450704225352113,
+        0.09859154929577464,
+        0.1267605633802817,
+        0.08450704225352113
+      ],
+      "scale_counts": {
+        "8.0": 249,
+        "10.0": 48,
+        "15.0": 47,
+        "None": 11
+      },
+      "pixel_l1": {
+        "mean": 0.2331942117340128,
+        "max": 0.38310590386390686,
+        "observations": 355
+      },
+      "perceptual": {
+        "mean": 381.05369262695314,
+        "max": 827.9976196289062,
+        "observations": 355
+      },
+      "seconds": {
+        "mean": 6.7344197183098595,
+        "max": 17.508,
+        "observations": 355
+      },
+      "generator_calls": {
+        "mean": 173.97464788732395,
+        "max": 357.0,
+        "observations": 355
+      },
+      "batch_peak_allocated_bytes": {
+        "mean": 7998243162.140845,
+        "max": 7998922752.0,
+        "observations": 355
+      },
+      "batch_peak_reserved_bytes": {
+        "mean": 9523391715.876057,
+        "max": 9806282752.0,
+        "observations": 355
+      }
+    },
+    "jump1/exact": {
+      "explanations": 355,
+      "distinct_photos": 71,
+      "guide_success": 0.9464788732394366,
+      "check_success": 0.15211267605633802,
+      "joint_success": 0.15211267605633802,
+      "check_success_among_guide_successes": 0.16071428571428573,
+      "numerical_failures": 0,
+      "check_success_per_seed": [
+        0.16901408450704225,
+        0.08450704225352113,
+        0.15492957746478872,
+        0.15492957746478872,
+        0.19718309859154928
+      ],
+      "scale_counts": {
+        "8.0": 245,
+        "10.0": 42,
+        "15.0": 49,
+        "None": 19
+      },
+      "pixel_l1": {
+        "mean": 0.2424012792572169,
+        "max": 0.4108255207538605,
+        "observations": 355
+      },
+      "perceptual": {
+        "mean": 401.2686962718695,
+        "max": 938.1778564453125,
+        "observations": 355
+      },
+      "seconds": {
+        "mean": 8.587692957746478,
+        "max": 23.119,
+        "observations": 355
+      },
+      "generator_calls": {
+        "mean": 178.66760563380282,
+        "max": 357.0,
+        "observations": 355
+      },
+      "batch_peak_allocated_bytes": {
+        "mean": 8382639665.03662,
+        "max": 8384715264.0,
+        "observations": 355
+      },
+      "batch_peak_reserved_bytes": {
+        "mean": 9523941110.625353,
+        "max": 9806282752.0,
+        "observations": 355
+      }
+    },
+    "jump4/shortcut": {
+      "explanations": 355,
+      "distinct_photos": 71,
+      "guide_success": 0.9492957746478873,
+      "check_success": 0.10422535211267606,
+      "joint_success": 0.10422535211267606,
+      "check_success_among_guide_successes": 0.10979228486646884,
+      "numerical_failures": 0,
+      "check_success_per_seed": [
+        0.1267605633802817,
+        0.09859154929577464,
+        0.11267605633802817,
+        0.09859154929577464,
+        0.08450704225352113
+      ],
+      "scale_counts": {
+        "8.0": 255,
+        "10.0": 40,
+        "15.0": 42,
+        "None": 18
+      },
+      "pixel_l1": {
+        "mean": 0.23217740755685617,
+        "max": 0.3795478343963623,
+        "observations": 355
+      },
+      "perceptual": {
+        "mean": 378.8881719025088,
+        "max": 815.4313354492188,
+        "observations": 355
+      },
+      "seconds": {
+        "mean": 10.299132394366197,
+        "max": 24.436,
+        "observations": 355
+      },
+      "generator_calls": {
+        "mean": 429.40845070422534,
+        "max": 888.0,
+        "observations": 355
+      },
+      "batch_peak_allocated_bytes": {
+        "mean": 7998242885.228169,
+        "max": 7998922752.0,
+        "observations": 355
+      },
+      "batch_peak_reserved_bytes": {
+        "mean": 9523941110.625353,
+        "max": 9806282752.0,
+        "observations": 355
+      }
+    },
+    "jump4/exact": {
+      "explanations": 355,
+      "distinct_photos": 71,
+      "guide_success": 0.9014084507042254,
+      "check_success": 0.1267605633802817,
+      "joint_success": 0.1267605633802817,
+      "check_success_among_guide_successes": 0.140625,
+      "numerical_failures": 0,
+      "check_success_per_seed": [
+        0.18309859154929578,
+        0.07042253521126761,
+        0.11267605633802817,
+        0.16901408450704225,
+        0.09859154929577464
+      ],
+      "scale_counts": {
+        "8.0": 239,
+        "10.0": 42,
+        "15.0": 39,
+        "None": 35
+      },
+      "pixel_l1": {
+        "mean": 0.23901991525166472,
+        "max": 0.3928699791431427,
+        "observations": 355
+      },
+      "perceptual": {
+        "mean": 393.6798544010646,
+        "max": 926.7386474609375,
+        "observations": 355
+      },
+      "seconds": {
+        "mean": 19.52790985915493,
+        "max": 53.421,
+        "observations": 355
+      },
+      "generator_calls": {
+        "mean": 454.4225352112676,
+        "max": 888.0,
+        "observations": 355
+      },
+      "batch_peak_allocated_bytes": {
+        "mean": 9480542334.91831,
+        "max": 9481496576.0,
+        "observations": 355
+      },
+      "batch_peak_reserved_bytes": {
+        "mean": 9803766169.6,
+        "max": 9806282752.0,
+        "observations": 355
+      }
+    }
+  },
+  "pairs": {
+    "340_339": {
+      "photos": 31,
+      "arms": {
+        "jump1/shortcut": {
+          "explanations": 155,
+          "distinct_photos": 31,
+          "guide_success": 0.9290322580645162,
+          "check_success": 0.012903225806451613,
+          "joint_success": 0.012903225806451613,
+          "check_success_among_guide_successes": 0.013888888888888888,
+          "numerical_failures": 0,
+          "check_success_per_seed": [
+            0.03225806451612903,
+            0.0,
+            0.0,
+            0.03225806451612903,
+            0.0
+          ],
+          "scale_counts": {
+            "8.0": 56,
+            "10.0": 41,
+            "15.0": 47,
+            "None": 11
+          },
+          "pixel_l1": {
+            "mean": 0.2695367327620906,
+            "max": 0.38310590386390686,
+            "observations": 155
+          },
+          "perceptual": {
+            "mean": 486.0066717332409,
+            "max": 827.9976196289062,
+            "observations": 155
+          },
+          "seconds": {
+            "mean": 9.256664516129032,
+            "max": 17.508,
+            "observations": 155
+          },
+          "generator_calls": {
+            "mean": 239.53548387096774,
+            "max": 357.0,
+            "observations": 155
+          },
+          "batch_peak_allocated_bytes": {
+            "mean": 7997488147.819355,
+            "max": 7998922752.0,
+            "observations": 155
+          },
+          "batch_peak_reserved_bytes": {
+            "mean": 9161618227.2,
+            "max": 9806282752.0,
+            "observations": 155
+          }
+        },
+        "jump1/exact": {
+          "explanations": 155,
+          "distinct_photos": 31,
+          "guide_success": 0.8774193548387097,
+          "check_success": 0.07741935483870968,
+          "joint_success": 0.07741935483870968,
+          "check_success_among_guide_successes": 0.08823529411764706,
+          "numerical_failures": 0,
+          "check_success_per_seed": [
+            0.06451612903225806,
+            0.06451612903225806,
+            0.03225806451612903,
+            0.12903225806451613,
+            0.0967741935483871
+          ],
+          "scale_counts": {
+            "8.0": 58,
+            "10.0": 30,
+            "15.0": 48,
+            "None": 19
+          },
+          "pixel_l1": {
+            "mean": 0.28329226105443894,
+            "max": 0.4108255207538605,
+            "observations": 155
+          },
+          "perceptual": {
+            "mean": 518.0288997527092,
+            "max": 938.1778564453125,
+            "observations": 155
+          },
+          "seconds": {
+            "mean": 11.764245161290322,
+            "max": 23.119,
+            "observations": 155
+          },
+          "generator_calls": {
+            "mean": 244.90967741935484,
+            "max": 357.0,
+            "observations": 155
+          },
+          "batch_peak_allocated_bytes": {
+            "mean": 8382061478.812903,
+            "max": 8384715264.0,
+            "observations": 155
+          },
+          "batch_peak_reserved_bytes": {
+            "mean": 9162876518.4,
+            "max": 9806282752.0,
+            "observations": 155
+          }
+        },
+        "jump4/shortcut": {
+          "explanations": 155,
+          "distinct_photos": 31,
+          "guide_success": 0.8838709677419355,
+          "check_success": 0.025806451612903226,
+          "joint_success": 0.025806451612903226,
+          "check_success_among_guide_successes": 0.029197080291970802,
+          "numerical_failures": 0,
+          "check_success_per_seed": [
+            0.03225806451612903,
+            0.03225806451612903,
+            0.0,
+            0.03225806451612903,
+            0.03225806451612903
+          ],
+          "scale_counts": {
+            "8.0": 62,
+            "10.0": 33,
+            "15.0": 42,
+            "None": 18
+          },
+          "pixel_l1": {
+            "mean": 0.2673244482086551,
+            "max": 0.3795478343963623,
+            "observations": 155
+          },
+          "perceptual": {
+            "mean": 481.23636376165575,
+            "max": 815.4313354492188,
+            "observations": 155
+          },
+          "seconds": {
+            "mean": 14.024006451612903,
+            "max": 24.436,
+            "observations": 155
+          },
+          "generator_calls": {
+            "mean": 588.1806451612903,
+            "max": 888.0,
+            "observations": 155
+          },
+          "batch_peak_allocated_bytes": {
+            "mean": 7997487513.6,
+            "max": 7998922752.0,
+            "observations": 155
+          },
+          "batch_peak_reserved_bytes": {
+            "mean": 9162876518.4,
+            "max": 9806282752.0,
+            "observations": 155
+          }
+        },
+        "jump4/exact": {
+          "explanations": 155,
+          "distinct_photos": 31,
+          "guide_success": 0.7741935483870968,
+          "check_success": 0.04516129032258064,
+          "joint_success": 0.04516129032258064,
+          "check_success_among_guide_successes": 0.058333333333333334,
+          "numerical_failures": 0,
+          "check_success_per_seed": [
+            0.06451612903225806,
+            0.0,
+            0.03225806451612903,
+            0.0967741935483871,
+            0.03225806451612903
+          ],
+          "scale_counts": {
+            "8.0": 56,
+            "10.0": 27,
+            "15.0": 37,
+            "None": 35
+          },
+          "pixel_l1": {
+            "mean": 0.2778853032858141,
+            "max": 0.3928699791431427,
+            "observations": 155
+          },
+          "perceptual": {
+            "mean": 504.6199890136719,
+            "max": 926.7386474609375,
+            "observations": 155
+          },
+          "seconds": {
+            "mean": 26.633387096774193,
+            "max": 53.421,
+            "observations": 155
+          },
+          "generator_calls": {
+            "mean": 622.5548387096774,
+            "max": 888.0,
+            "observations": 155
+          },
+          "batch_peak_allocated_bytes": {
+            "mean": 9480548100.954838,
+            "max": 9481496576.0,
+            "observations": 155
+          },
+          "batch_peak_reserved_bytes": {
+            "mean": 9803766169.6,
+            "max": 9806282752.0,
+            "observations": 155
+          }
+        }
+      },
+      "comparisons": {
+        "jump1": {
+          "difference_exact_minus_shortcut": 0.06451612903225806,
+          "ci95": [
+            0.019354838709677424,
+            0.11612903225806454
+          ]
+        },
+        "jump4": {
+          "difference_exact_minus_shortcut": 0.019354838709677424,
+          "ci95": [
+            0.0,
+            0.03870967741935485
+          ]
+        }
+      }
+    },
+    "293_286": {
+      "photos": 30,
+      "arms": {
+        "jump1/shortcut": {
+          "explanations": 150,
+          "distinct_photos": 30,
+          "guide_success": 1.0,
+          "check_success": 0.14,
+          "joint_success": 0.14,
+          "check_success_among_guide_successes": 0.14,
+          "numerical_failures": 0,
+          "check_success_per_seed": [
+            0.13333333333333333,
+            0.13333333333333333,
+            0.13333333333333333,
+            0.2,
+            0.1
+          ],
+          "scale_counts": {
+            "8.0": 143,
+            "10.0": 7,
+            "15.0": 0,
+            "None": 0
+          },
+          "pixel_l1": {
+            "mean": 0.21747487331430118,
+            "max": 0.29547491669654846,
+            "observations": 150
+          },
+          "perceptual": {
+            "mean": 301.94175872802737,
+            "max": 487.22418212890625,
+            "observations": 150
+          },
+          "seconds": {
+            "mean": 4.845793333333334,
+            "max": 9.817,
+            "observations": 150
+          },
+          "generator_calls": {
+            "mean": 124.55333333333333,
+            "max": 238.0,
+            "observations": 150
+          },
+          "batch_peak_allocated_bytes": {
+            "mean": 7998828489.386666,
+            "max": 7998922752.0,
+            "observations": 150
+          },
+          "batch_peak_reserved_bytes": {
+            "mean": 9803766169.6,
+            "max": 9806282752.0,
+            "observations": 150
+          }
+        },
+        "jump1/exact": {
+          "explanations": 150,
+          "distinct_photos": 30,
+          "guide_success": 1.0,
+          "check_success": 0.16,
+          "joint_success": 0.16,
+          "check_success_among_guide_successes": 0.16,
+          "numerical_failures": 0,
+          "check_success_per_seed": [
+            0.23333333333333334,
+            0.06666666666666667,
+            0.2,
+            0.1,
+            0.2
+          ],
+          "scale_counts": {
+            "8.0": 139,
+            "10.0": 10,
+            "15.0": 1,
+            "None": 0
+          },
+          "pixel_l1": {
+            "mean": 0.22199013844132423,
+            "max": 0.3363001346588135,
+            "observations": 150
+          },
+          "perceptual": {
+            "mean": 312.3775247192383,
+            "max": 524.6340942382812,
+            "observations": 150
+          },
+          "seconds": {
+            "mean": 6.25276,
+            "max": 17.465,
+            "observations": 150
+          },
+          "generator_calls": {
+            "mean": 128.52,
+            "max": 357.0,
+            "observations": 150
+          },
+          "batch_peak_allocated_bytes": {
+            "mean": 8383087895.893333,
+            "max": 8384715264.0,
+            "observations": 150
+          },
+          "batch_peak_reserved_bytes": {
+            "mean": 9803766169.6,
+            "max": 9806282752.0,
+            "observations": 150
+          }
+        },
+        "jump4/shortcut": {
+          "explanations": 150,
+          "distinct_photos": 30,
+          "guide_success": 1.0,
+          "check_success": 0.12666666666666668,
+          "joint_success": 0.12666666666666668,
+          "check_success_among_guide_successes": 0.12666666666666668,
+          "numerical_failures": 0,
+          "check_success_per_seed": [
+            0.16666666666666666,
+            0.16666666666666666,
+            0.13333333333333333,
+            0.1,
+            0.06666666666666667
+          ],
+          "scale_counts": {
+            "8.0": 143,
+            "10.0": 7,
+            "15.0": 0,
+            "None": 0
+          },
+          "pixel_l1": {
+            "mean": 0.21736503029863039,
+            "max": 0.2941300570964813,
+            "observations": 150
+          },
+          "perceptual": {
+            "mean": 301.5731396484375,
+            "max": 483.12261962890625,
+            "observations": 150
+          },
+          "seconds": {
+            "mean": 7.478833333333333,
+            "max": 16.091,
+            "observations": 150
+          },
+          "generator_calls": {
+            "mean": 309.81333333333333,
+            "max": 592.0,
+            "observations": 150
+          },
+          "batch_peak_allocated_bytes": {
+            "mean": 7998828489.386666,
+            "max": 7998922752.0,
+            "observations": 150
+          },
+          "batch_peak_reserved_bytes": {
+            "mean": 9803766169.6,
+            "max": 9806282752.0,
+            "observations": 150
+          }
+        },
+        "jump4/exact": {
+          "explanations": 150,
+          "distinct_photos": 30,
+          "guide_success": 1.0,
+          "check_success": 0.14666666666666667,
+          "joint_success": 0.14666666666666667,
+          "check_success_among_guide_successes": 0.14666666666666667,
+          "numerical_failures": 0,
+          "check_success_per_seed": [
+            0.23333333333333334,
+            0.1,
+            0.13333333333333333,
+            0.13333333333333333,
+            0.13333333333333333
+          ],
+          "scale_counts": {
+            "8.0": 133,
+            "10.0": 15,
+            "15.0": 2,
+            "None": 0
+          },
+          "pixel_l1": {
+            "mean": 0.22029735043644905,
+            "max": 0.30101633071899414,
+            "observations": 150
+          },
+          "perceptual": {
+            "mean": 309.2875489298503,
+            "max": 500.69537353515625,
+            "observations": 150
+          },
+          "seconds": {
+            "mean": 14.51656,
+            "max": 39.555,
+            "observations": 150
+          },
+          "generator_calls": {
+            "mean": 333.49333333333334,
+            "max": 888.0,
+            "observations": 150
+          },
+          "batch_peak_allocated_bytes": {
+            "mean": 9480538330.453333,
+            "max": 9481496576.0,
+            "observations": 150
+          },
+          "batch_peak_reserved_bytes": {
+            "mean": 9803766169.6,
+            "max": 9806282752.0,
+            "observations": 150
+          }
+        }
+      },
+      "comparisons": {
+        "jump1": {
+          "difference_exact_minus_shortcut": 0.02,
+          "ci95": [
+            -0.03333333333333333,
+            0.07333333333333333
+          ]
+        },
+        "jump4": {
+          "difference_exact_minus_shortcut": 0.020000000000000004,
+          "ci95": [
+            -0.04666666666666666,
+            0.08000000000000002
+          ]
+        }
+      }
+    },
+    "285_283": {
+      "photos": 10,
+      "arms": {
+        "jump1/shortcut": {
+          "explanations": 50,
+          "distinct_photos": 10,
+          "guide_success": 1.0,
+          "check_success": 0.24,
+          "joint_success": 0.24,
+          "check_success_among_guide_successes": 0.24,
+          "numerical_failures": 0,
+          "check_success_per_seed": [
+            0.2,
+            0.2,
+            0.3,
+            0.2,
+            0.3
+          ],
+          "scale_counts": {
+            "8.0": 50,
+            "10.0": 0,
+            "15.0": 0,
+            "None": 0
+          },
+          "pixel_l1": {
+            "mean": 0.16769041180610655,
+            "max": 0.22492782771587372,
+            "observations": 50
+          },
+          "perceptual": {
+            "mean": 293.03525909423826,
+            "max": 443.136474609375,
+            "observations": 50
+          },
+          "seconds": {
+            "mean": 4.58134,
+            "max": 5.544,
+            "observations": 50
+          },
+          "generator_calls": {
+            "mean": 119.0,
+            "max": 119.0,
+            "observations": 50
+          },
+          "batch_peak_allocated_bytes": {
+            "mean": 7998827724.8,
+            "max": 7998906368.0,
+            "observations": 50
+          },
+          "batch_peak_reserved_bytes": {
+            "mean": 9803766169.6,
+            "max": 9806282752.0,
+            "observations": 50
+          }
+        },
+        "jump1/exact": {
+          "explanations": 50,
+          "distinct_photos": 10,
+          "guide_success": 1.0,
+          "check_success": 0.36,
+          "joint_success": 0.36,
+          "check_success_among_guide_successes": 0.36,
+          "numerical_failures": 0,
+          "check_success_per_seed": [
+            0.3,
+            0.2,
+            0.4,
+            0.4,
+            0.5
+          ],
+          "scale_counts": {
+            "8.0": 48,
+            "10.0": 2,
+            "15.0": 0,
+            "None": 0
+          },
+          "pixel_l1": {
+            "mean": 0.17687265813350678,
+            "max": 0.23403246700763702,
+            "observations": 50
+          },
+          "perceptual": {
+            "mean": 305.98558013916016,
+            "max": 506.4408264160156,
+            "observations": 50
+          },
+          "seconds": {
+            "mean": 5.74518,
+            "max": 12.385,
+            "observations": 50
+          },
+          "generator_calls": {
+            "mean": 123.76,
+            "max": 238.0,
+            "observations": 50
+          },
+          "batch_peak_allocated_bytes": {
+            "mean": 8383087349.76,
+            "max": 8384698880.0,
+            "observations": 50
+          },
+          "batch_peak_reserved_bytes": {
+            "mean": 9803766169.6,
+            "max": 9806282752.0,
+            "observations": 50
+          }
+        },
+        "jump4/shortcut": {
+          "explanations": 50,
+          "distinct_photos": 10,
+          "guide_success": 1.0,
+          "check_success": 0.28,
+          "joint_success": 0.28,
+          "check_success_among_guide_successes": 0.28,
+          "numerical_failures": 0,
+          "check_success_per_seed": [
+            0.3,
+            0.1,
+            0.4,
+            0.3,
+            0.3
+          ],
+          "scale_counts": {
+            "8.0": 50,
+            "10.0": 0,
+            "15.0": 0,
+            "None": 0
+          },
+          "pixel_l1": {
+            "mean": 0.16765871331095694,
+            "max": 0.2235737442970276,
+            "observations": 50
+          },
+          "perceptual": {
+            "mean": 293.5538739013672,
+            "max": 440.99029541015625,
+            "observations": 50
+          },
+          "seconds": {
+            "mean": 7.21292,
+            "max": 8.405,
+            "observations": 50
+          },
+          "generator_calls": {
+            "mean": 296.0,
+            "max": 296.0,
+            "observations": 50
+          },
+          "batch_peak_allocated_bytes": {
+            "mean": 7998827724.8,
+            "max": 7998906368.0,
+            "observations": 50
+          },
+          "batch_peak_reserved_bytes": {
+            "mean": 9803766169.6,
+            "max": 9806282752.0,
+            "observations": 50
+          }
+        },
+        "jump4/exact": {
+          "explanations": 50,
+          "distinct_photos": 10,
+          "guide_success": 1.0,
+          "check_success": 0.32,
+          "joint_success": 0.32,
+          "check_success_among_guide_successes": 0.32,
+          "numerical_failures": 0,
+          "check_success_per_seed": [
+            0.4,
+            0.2,
+            0.3,
+            0.5,
+            0.2
+          ],
+          "scale_counts": {
+            "8.0": 50,
+            "10.0": 0,
+            "15.0": 0,
+            "None": 0
+          },
+          "pixel_l1": {
+            "mean": 0.1747049067914486,
+            "max": 0.26664671301841736,
+            "observations": 50
+          },
+          "perceptual": {
+            "mean": 302.942353515625,
+            "max": 520.0663452148438,
+            "observations": 50
+          },
+          "seconds": {
+            "mean": 12.534980000000001,
+            "max": 17.763,
+            "observations": 50
+          },
+          "generator_calls": {
+            "mean": 296.0,
+            "max": 296.0,
+            "observations": 50
+          },
+          "batch_peak_allocated_bytes": {
+            "mean": 9480536473.6,
+            "max": 9481480192.0,
+            "observations": 50
+          },
+          "batch_peak_reserved_bytes": {
+            "mean": 9803766169.6,
+            "max": 9806282752.0,
+            "observations": 50
+          }
+        }
+      },
+      "comparisons": {
+        "jump1": {
+          "difference_exact_minus_shortcut": 0.12000000000000002,
+          "ci95": [
+            0.04,
+            0.20000000000000004
+          ]
+        },
+        "jump4": {
+          "difference_exact_minus_shortcut": 0.039999999999999994,
+          "ci95": [
+            -0.12000000000000002,
+            0.24000000000000005
+          ]
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "jump1": {
+      "difference_exact_minus_shortcut": 0.05352112676056338,
+      "ci95": [
+        0.02253521126760563,
+        0.08732394366197184
+      ]
+    },
+    "jump4": {
+      "difference_exact_minus_shortcut": 0.02253521126760563,
+      "ci95": [
+        -0.01690140845070422,
+        0.061971830985915494
+      ]
+    }
+  },
+  "experiment_signature": "9ec59cffa78c52b3b7060ae5c1fd4f7b9c276cdef0a63fa951ba32b0f7354ae5"
+}

@@ -1,0 +1,133 @@
+{
+  "purpose": "practice-only feasibility pilot",
+  "arms": {
+    "jump1/shortcut": {
+      "explanations": 4,
+      "guide_success": 1.0,
+      "check_success": 0.0,
+      "joint_success": 0.0,
+      "seconds": 6.78625,
+      "pixel_l1": 0.2625109553337097,
+      "perceptual": 451.57462310791016,
+      "peak_allocated_gib": 7.448692321777344,
+      "scale_counts": {
+        "8.0": 2,
+        "10.0": 1,
+        "15.0": 1,
+        "None": 0
+      },
+      "all_steps_finite": true,
+      "trace_records": 420,
+      "loss_gradient_l2": {
+        "mean": 93.53382509322394,
+        "max": 214.00445556640625
+      },
+      "guidance_l2": {
+        "mean": 146.67661972954159,
+        "max": 463.58428955078125
+      },
+      "update_l2": {
+        "mean": 1.2987162667282282,
+        "max": 8.049445152282715
+      }
+    },
+    "jump1/exact": {
+      "explanations": 4,
+      "guide_success": 0.75,
+      "check_success": 0.0,
+      "joint_success": 0.0,
+      "seconds": 10.2015,
+      "pixel_l1": 0.27108824998140335,
+      "perceptual": 466.73387908935547,
+      "peak_allocated_gib": 7.804693698883057,
+      "scale_counts": {
+        "8.0": 1,
+        "10.0": 1,
+        "15.0": 1,
+        "None": 1
+      },
+      "all_steps_finite": true,
+      "trace_records": 540,
+      "loss_gradient_l2": {
+        "mean": 95.51448092990451,
+        "max": 1064.1334228515625
+      },
+      "guidance_l2": {
+        "mean": 98.94701393975151,
+        "max": 1065.3485107421875
+      },
+      "update_l2": {
+        "mean": 0.8525547641484688,
+        "max": 12.274636268615723
+      }
+    },
+    "jump4/shortcut": {
+      "explanations": 4,
+      "guide_success": 1.0,
+      "check_success": 0.0,
+      "joint_success": 0.0,
+      "seconds": 11.01925,
+      "pixel_l1": 0.26364925876259804,
+      "perceptual": 451.60379791259766,
+      "peak_allocated_gib": 7.448692321777344,
+      "scale_counts": {
+        "8.0": 2,
+        "10.0": 1,
+        "15.0": 1,
+        "None": 0
+      },
+      "all_steps_finite": true,
+      "trace_records": 420,
+      "loss_gradient_l2": {
+        "mean": 97.74095712389264,
+        "max": 350.16156005859375
+      },
+      "guidance_l2": {
+        "mean": 152.1247904732114,
+        "max": 486.4212951660156
+      },
+      "update_l2": {
+        "mean": 1.3327599743048528,
+        "max": 8.049514770507812
+      }
+    },
+    "jump4/exact": {
+      "explanations": 4,
+      "guide_success": 1.0,
+      "check_success": 0.0,
+      "joint_success": 0.0,
+      "seconds": 18.72175,
+      "pixel_l1": 0.26461509242653847,
+      "perceptual": 443.7677536010742,
+      "peak_allocated_gib": 8.828439712524414,
+      "scale_counts": {
+        "8.0": 1,
+        "10.0": 2,
+        "15.0": 1,
+        "None": 0
+      },
+      "all_steps_finite": true,
+      "trace_records": 480,
+      "loss_gradient_l2": {
+        "mean": 93.9983091990153,
+        "max": 1057.3485107421875
+      },
+      "guidance_l2": {
+        "mean": 97.14747656186422,
+        "max": 1058.44384765625
+      },
+      "update_l2": {
+        "mean": 0.8108585673558991,
+        "max": 12.195083618164062
+      }
+    }
+  },
+  "comparisons": {
+    "jump1": {
+      "check_success_difference_exact_minus_shortcut": 0.0
+    },
+    "jump4": {
+      "check_success_difference_exact_minus_shortcut": 0.0
+    }
+  }
+}
