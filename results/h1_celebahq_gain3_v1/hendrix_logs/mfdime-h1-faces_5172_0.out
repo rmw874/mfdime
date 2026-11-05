@@ -1,0 +1,12 @@
+name, driver_version, memory.total [MiB]
+NVIDIA A100-PCIE-40GB, 610.57.04, 40960 MiB
+3.12.14 (main, Sep  1 2026, 14:16:52) [Clang 22.1.3 ] 2.8.0+cu126 NVIDIA A100-PCIE-40GB
+== jump1, 512 faces, seed 0, 2026-11-05T01:23:35+01:00
+load
+jump1 seed 0
+512 explanations, 86% flipped, 190 generator calls and 1.80 s each -> /home/rmw874/mfdime/results/h1_celebahq_gain3_v1/seed0/jump1
+== euler_rest, 512 faces, seed 0, 2026-11-05T01:40:05+01:00
+load
+euler_rest seed 0
+512 explanations, 92% flipped, 2556 generator calls and 7.32 s each -> /home/rmw874/mfdime/results/h1_celebahq_gain3_v1/seed0/euler_rest
+== done 2026-11-05T02:43:33+01:00

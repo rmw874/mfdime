@@ -1,0 +1,44 @@
+name, driver_version, memory.total [MiB]
+NVIDIA A100-PCIE-40GB, 610.57.04, 40960 MiB
+3.12.14 (main, Sep  1 2026, 14:16:52) [Clang 22.1.3 ] 2.8.0+cu126 NVIDIA A100-PCIE-40GB
+== 293 -> 286, jump1, seed 0, 2026-11-05T03:11:41+01:00
+load
+jump1 seed 0
+30 explanations, 100% flipped, 123 generator calls and 2.50 s each -> /home/rmw874/mfdime/results/h1_imagenet_v1/293_286/seed0/jump1
+== 293 -> 286, euler_rest, seed 0, 2026-11-05T03:13:47+01:00
+load
+euler_rest seed 0
+30 explanations, 100% flipped, 1830 generator calls and 11.20 s each -> /home/rmw874/mfdime/results/h1_imagenet_v1/293_286/seed0/euler_rest
+== 293 -> 286, jump1, seed 1, 2026-11-05T03:20:01+01:00
+load
+jump1 seed 1
+30 explanations, 100% flipped, 123 generator calls and 2.52 s each -> /home/rmw874/mfdime/results/h1_imagenet_v1/293_286/seed1/jump1
+== 293 -> 286, euler_rest, seed 1, 2026-11-05T03:22:00+01:00
+load
+euler_rest seed 1
+30 explanations, 100% flipped, 1830 generator calls and 11.24 s each -> /home/rmw874/mfdime/results/h1_imagenet_v1/293_286/seed1/euler_rest
+== 293 -> 286, jump1, seed 2, 2026-11-05T03:28:20+01:00
+load
+jump1 seed 2
+30 explanations, 100% flipped, 135 generator calls and 2.99 s each -> /home/rmw874/mfdime/results/h1_imagenet_v1/293_286/seed2/jump1
+== 293 -> 286, euler_rest, seed 2, 2026-11-05T03:30:33+01:00
+load
+euler_rest seed 2
+30 explanations, 100% flipped, 1830 generator calls and 11.23 s each -> /home/rmw874/mfdime/results/h1_imagenet_v1/293_286/seed2/euler_rest
+== 293 -> 286, jump1, seed 3, 2026-11-05T03:36:53+01:00
+load
+jump1 seed 3
+30 explanations, 100% flipped, 123 generator calls and 2.51 s each -> /home/rmw874/mfdime/results/h1_imagenet_v1/293_286/seed3/jump1
+== 293 -> 286, euler_rest, seed 3, 2026-11-05T03:38:52+01:00
+load
+euler_rest seed 3
+30 explanations, 100% flipped, 1771 generator calls and 10.03 s each -> /home/rmw874/mfdime/results/h1_imagenet_v1/293_286/seed3/euler_rest
+== 293 -> 286, jump1, seed 4, 2026-11-05T03:44:36+01:00
+load
+jump1 seed 4
+30 explanations, 100% flipped, 127 generator calls and 2.67 s each -> /home/rmw874/mfdime/results/h1_imagenet_v1/293_286/seed4/jump1
+== 293 -> 286, euler_rest, seed 4, 2026-11-05T03:46:40+01:00
+load
+euler_rest seed 4
+30 explanations, 100% flipped, 1830 generator calls and 11.24 s each -> /home/rmw874/mfdime/results/h1_imagenet_v1/293_286/seed4/euler_rest
+== done 2026-11-05T03:53:00+01:00

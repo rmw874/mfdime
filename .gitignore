@@ -27,3 +27,7 @@ logs/
 *.zip
 *.safetensors
 *.parquet
+
+# Result images (the datasets' terms forbid redistributing them)
+results/**/*.png
+results/**/*.jpg

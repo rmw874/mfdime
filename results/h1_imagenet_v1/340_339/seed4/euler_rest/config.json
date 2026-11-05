@@ -1,0 +1,33 @@
+{
+  "dataset": "imagenet",
+  "dmf_repo": "third_party/dmf",
+  "dmf_ckpt": "weights/dmf/dmf_xl_2_256.pt",
+  "sit_ckpt": "weights/dmf/sit_xl_2_repa_256.pt",
+  "vae": "weights/sd-vae-ft-ema",
+  "imagenet_val": "data/imagenet-1k/data",
+  "source": "340",
+  "target": "339",
+  "fire_repo": "third_party/fire",
+  "pmf_ckpt": "weights/fire/pmf-celebahq256-smile.pt",
+  "celebahq_zip": "data/celebahq/CelebAMask-HQ.zip",
+  "celeba_partition": "data/celebahq/list_eval_partition.txt",
+  "steex_ckpt": "weights/steex/decision_densenet/celebamaskhq/checkpoint.tar",
+  "out_dir": "/home/rmw874/mfdime/results/h1_imagenet_v1/340_339/seed4/euler_rest",
+  "peek": "euler_rest",
+  "gain": "1.0",
+  "seeds": "[4]",
+  "split": "held_out",
+  "skip": "0",
+  "n": "0",
+  "batch": "8",
+  "smoke": "False",
+  "device": "cuda",
+  "t_noise": 0.5548083443760305,
+  "t_first_step": 0.5498104895547484,
+  "steps": 60,
+  "scales": [
+    8.0,
+    10.0,
+    15.0
+  ]
+}

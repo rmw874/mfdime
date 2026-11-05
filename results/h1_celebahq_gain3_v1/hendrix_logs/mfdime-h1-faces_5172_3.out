@@ -1,0 +1,13 @@
+name, driver_version, memory.total [MiB]
+NVIDIA A100-SXM4-40GB, 610.57.04, 40960 MiB
+NVIDIA A100-SXM4-40GB, 610.57.04, 40960 MiB
+3.12.14 (main, Sep  1 2026, 14:16:52) [Clang 22.1.3 ] 2.8.0+cu126 NVIDIA A100-SXM4-40GB
+== jump1, 512 faces, seed 3, 2026-11-05T02:17:40+01:00
+load
+jump1 seed 3
+512 explanations, 85% flipped, 188 generator calls and 1.62 s each -> /home/rmw874/mfdime/results/h1_celebahq_gain3_v1/seed3/jump1
+== euler_rest, 512 faces, seed 3, 2026-11-05T02:32:23+01:00
+load
+euler_rest seed 3
+512 explanations, 92% flipped, 2549 generator calls and 6.32 s each -> /home/rmw874/mfdime/results/h1_celebahq_gain3_v1/seed3/euler_rest
+== done 2026-11-05T03:27:06+01:00
