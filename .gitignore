@@ -10,8 +10,8 @@ __pycache__/
 # Downloaded inputs (sources in src/mfdime/config.py)
 data/
 weights/
-runs/
-logs/
+/runs/
+/logs/
 
 # Binaries, archives and env files
 .env
@@ -28,6 +28,7 @@ logs/
 *.safetensors
 *.parquet
 
-# Result images (the datasets' terms forbid redistributing them)
-results/**/*.png
-results/**/*.jpg
+# Images (the datasets' terms forbid redistributing them)
+*.png
+*.jpg
+*.jpeg

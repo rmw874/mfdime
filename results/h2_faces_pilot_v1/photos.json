@@ -1,0 +1,75 @@
+{
+  "split": "practice",
+  "skip": 0,
+  "test_faces": 2824,
+  "attribute": "smile",
+  "names": [
+    "4.jpg",
+    "26.jpg",
+    "44.jpg",
+    "59.jpg"
+  ],
+  "label": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "guide_pred": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "guide_accuracy": 0.9375,
+  "practice_names": [
+    "2.jpg",
+    "4.jpg",
+    "26.jpg",
+    "44.jpg",
+    "59.jpg",
+    "84.jpg",
+    "93.jpg",
+    "108.jpg",
+    "127.jpg",
+    "133.jpg",
+    "134.jpg",
+    "139.jpg",
+    "142.jpg",
+    "147.jpg",
+    "151.jpg",
+    "172.jpg"
+  ],
+  "practice_labels": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+  ],
+  "targets": [
+    1,
+    1,
+    0,
+    0
+  ],
+  "selected_practice_indices": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "requested": 4,
+  "selection": "prefer equal classes among guide/OpenCLIP/annotation agreement"
+}

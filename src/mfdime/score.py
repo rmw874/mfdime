@@ -67,6 +67,8 @@ def load_runs(root: Path) -> Runs:
     for manifest in sorted(root.rglob("manifest.jsonl")):
         for line in manifest.read_text().splitlines():
             r = json.loads(line)
+            if r.get("gradient_mode", "shortcut") != "shortcut":
+                raise SystemExit("STOP: mfdime.score is the H1 shortcut-only scorer; use h2_pilot's pilot report for H2")
             if r["peek"] in rows:
                 key = (r["photo"], r["seed"])
                 if key in rows[r["peek"]]:

@@ -1,0 +1,50 @@
+{
+  "selection_rule": "first two photos per frozen cohort; seed 0; all four arms",
+  "examples": [
+    {
+      "pair": "340_339",
+      "photo": "ILSVRC2012_val_00018423_n02391049.JPEG",
+      "seed": 0,
+      "sample_hash": "c9b314f694d1e52589c1"
+    },
+    {
+      "pair": "340_339",
+      "photo": "ILSVRC2012_val_00019146_n02391049.JPEG",
+      "seed": 0,
+      "sample_hash": "c655dd0d69f508a1ecdc"
+    },
+    {
+      "pair": "293_286",
+      "photo": "ILSVRC2012_val_00018233_n02130308.JPEG",
+      "seed": 0,
+      "sample_hash": "b9f91dc4b840d150639c"
+    },
+    {
+      "pair": "293_286",
+      "photo": "ILSVRC2012_val_00018743_n02130308.JPEG",
+      "seed": 0,
+      "sample_hash": "5e24d4a04971a927ea95"
+    },
+    {
+      "pair": "285_283",
+      "photo": "ILSVRC2012_val_00027189_n02124075.JPEG",
+      "seed": 0,
+      "sample_hash": "2353e0f65981e153ee86"
+    },
+    {
+      "pair": "285_283",
+      "photo": "ILSVRC2012_val_00027448_n02124075.JPEG",
+      "seed": 0,
+      "sample_hash": "78d8081e53abeb0b1c74"
+    }
+  ],
+  "included_log_files": [
+    "mfdime-h2-full_5760_0.err",
+    "mfdime-h2-full_5760_0.out",
+    "mfdime-h2-full_5760_1.err",
+    "mfdime-h2-full_5760_1.out",
+    "mfdime-h2-full_5760_2.err",
+    "mfdime-h2-full_5760_2.out"
+  ],
+  "note": "Images illustrate outcomes; they are not a visual-quality evaluation. Source files are the cluster working copy at collection time; consult protocol.json for generation code identity."
+}

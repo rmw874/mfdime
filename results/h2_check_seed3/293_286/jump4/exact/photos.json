@@ -1,0 +1,52 @@
+{
+  "split": "practice",
+  "skip": 0,
+  "candidates": 50,
+  "correct": 46,
+  "names": [
+    "ILSVRC2012_val_00000348_n02130308.JPEG",
+    "ILSVRC2012_val_00001060_n02130308.JPEG",
+    "ILSVRC2012_val_00002718_n02130308.JPEG",
+    "ILSVRC2012_val_00005006_n02130308.JPEG"
+  ],
+  "requested": 4,
+  "eligible": 16,
+  "selected": 4,
+  "practice_names": [
+    "ILSVRC2012_val_00000348_n02130308.JPEG",
+    "ILSVRC2012_val_00001060_n02130308.JPEG",
+    "ILSVRC2012_val_00002718_n02130308.JPEG",
+    "ILSVRC2012_val_00005006_n02130308.JPEG",
+    "ILSVRC2012_val_00006239_n02130308.JPEG",
+    "ILSVRC2012_val_00006341_n02130308.JPEG",
+    "ILSVRC2012_val_00007031_n02130308.JPEG",
+    "ILSVRC2012_val_00007606_n02130308.JPEG",
+    "ILSVRC2012_val_00008094_n02130308.JPEG",
+    "ILSVRC2012_val_00009133_n02130308.JPEG",
+    "ILSVRC2012_val_00013129_n02130308.JPEG",
+    "ILSVRC2012_val_00013656_n02130308.JPEG",
+    "ILSVRC2012_val_00014974_n02130308.JPEG",
+    "ILSVRC2012_val_00017208_n02130308.JPEG",
+    "ILSVRC2012_val_00017732_n02130308.JPEG",
+    "ILSVRC2012_val_00018205_n02130308.JPEG"
+  ],
+  "check_predictions": [
+    293,
+    293,
+    293,
+    293,
+    293,
+    293,
+    293,
+    293,
+    293,
+    293,
+    293,
+    293,
+    293,
+    293,
+    293,
+    293
+  ],
+  "smoke_bypasses_correctness_filter": false
+}

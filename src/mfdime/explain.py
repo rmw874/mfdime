@@ -23,7 +23,9 @@ photos per page, each row the original, then each seed's counterfactual).
 from __future__ import annotations
 
 import argparse
+import contextlib
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -41,6 +43,10 @@ GRID_PHOTOS = 64  # photos per grid page: a JPEG is at most 65,500 px high, abou
 def prepare(args) -> tuple[setups.Setup, dime.Schedule]:
     """Resolve the defaults, create --out-dir, build the setup and record env.json. Returns the setup and DiME's
     schedule."""
+    if args.gradient_mode == "exact" and not re.fullmatch(r"jump[1-9]\d*", args.peek):
+        raise SystemExit("STOP: exact gradients currently support jump<N> peeks only (N >= 1)")
+    if args.evaluate and args.dataset != "imagenet":
+        raise SystemExit("STOP: independent evaluation is currently available for ImageNet only")
     sched = dime.dime_schedule()
     if args.gain is None:
         args.gain = config.GAIN[args.dataset]
@@ -74,8 +80,18 @@ def counterfactuals(args, s: setups.Setup, ph: setups.Photos, arm: str, seeds: l
     with torch.no_grad():
         lat = torch.cat([s.ae.encode(ph.x[b].to(args.device)) for b in batches(len(ph.x), args.batch)])
     before = predict(s.guide, ph.x, args.batch, args.device)
+    check = s.check if args.evaluate else None
+    if args.evaluate and check is None:
+        raise ValueError("independent evaluator is unavailable")
+    check_before = predict(check, ph.x, args.batch, args.device) if check is not None else None
     rows, per_seed = [], []
-    with (out_dir / "manifest.jsonl").open("w") as manifest:
+    trace_context = (out_dir / "diagnostics.jsonl").open("w") if args.diagnostics else contextlib.nullcontext()
+    with (out_dir / "manifest.jsonl").open("w") as manifest, trace_context as trace_file:
+        def trace(row: dict) -> None:
+            if trace_file is not None:
+                trace_file.write(json.dumps(row, allow_nan=False) + "\n")
+                trace_file.flush()
+
         for seed in seeds:
             print(f"{arm} seed {seed}", flush=True)
             keys = [f"{name}:seed{seed}" for name in ph.names]
@@ -87,28 +103,54 @@ def counterfactuals(args, s: setups.Setup, ph: setups.Photos, arm: str, seeds: l
             for sl in batches(len(ph.x), args.batch):
                 if args.device == "cuda":
                     torch.cuda.synchronize()
+                    torch.cuda.reset_peak_memory_stats()
                 start = time.perf_counter()
                 z, used, calls = dime.explain(v, peek, s.ae.decode, s.guide, s.perc, ph.x[sl].to(args.device), lat[sl],
                                               z_start[sl], ph.target[sl], sched.grid, args.gain, keys[sl],
-                                              use_logits=s.use_logits)
+                                              use_logits=s.use_logits, gradient_mode=args.gradient_mode,
+                                              trace=trace if args.diagnostics else None)
                 with torch.no_grad():
                     img = s.ae.decode(z).clamp(-1, 1).cpu()
                 if args.device == "cuda":
                     torch.cuda.synchronize()
                 secs = (time.perf_counter() - start) / len(img)
+                peak = torch.cuda.max_memory_allocated() if args.device == "cuda" else None
+                reserved = torch.cuda.max_memory_reserved() if args.device == "cuda" else None
+                if not torch.isfinite(img).all():
+                    raise FloatingPointError("nonfinite counterfactual image")
                 after = predict(s.guide, img, args.batch, args.device)
+                check_after = predict(check, img, args.batch, args.device) if check is not None else None
+                with torch.no_grad():
+                    changes = []
+                    if check is not None:
+                        # Per-image objective distance, using the same VGG loss as guidance.
+                        changes = [float(s.perc(img[j:j + 1].to(args.device), ph.x[i:i + 1].to(args.device)))
+                                   for j, i in enumerate(range(sl.start, sl.stop))]
                 for j, i in enumerate(range(sl.start, sl.stop)):
                     save_png(img[j], out_dir / "images" / f"{Path(ph.names[i]).stem}_seed{seed}_cf.png")
                     row = {"photo": ph.names[i], "seed": seed, "peek": arm, "gain": args.gain,
+                           "gradient_mode": args.gradient_mode,
                            "target": int(ph.target[i]), "guide_before": int(before[i]), "guide_after": int(after[j]),
                            "flipped": bool(after[j] == ph.target[i]),
                            "scale": dime.SCALES[used[j]] if used[j] >= 0 else None,
-                           "generator_calls": int(calls[j]), "seconds": round(secs, 3)}
+                           "generator_calls": int(calls[j]), "seconds": round(secs, 3),
+                           "batch_peak_allocated_bytes": peak, "batch_peak_reserved_bytes": reserved}
+                    if check_before is not None and check_after is not None:
+                        row.update({"source": args.source, "check_before": int(check_before[i]),
+                                    "check_after": int(check_after[j]), "check_flipped": bool(check_after[j] == ph.target[i]),
+                                    "pixel_l1": float((img[j] - ph.x[i]).abs().mean()), "perceptual": changes[j]})
                     manifest.write(json.dumps(row) + "\n")
                     rows.append(row)
                 out.append(img)
             per_seed.append(torch.cat(out))
     return rows, per_seed
+
+
+def add_run_args(p: argparse.ArgumentParser) -> None:
+    """Options shared with the H2 pilot; shortcut remains the default for existing runs."""
+    p.add_argument("--gradient-mode", choices=("shortcut", "exact"), default="shortcut")
+    p.add_argument("--diagnostics", action="store_true", help="record per-step losses and gradient/update norms")
+    p.add_argument("--evaluate", action="store_true", help="record independent ImageNet evaluator and image distances")
 
 
 def save_grids(x: Tensor, per_seed: list[Tensor], out_dir: Path) -> None:
@@ -122,6 +164,7 @@ def save_grids(x: Tensor, per_seed: list[Tensor], out_dir: Path) -> None:
 def main(argv=None) -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     setups.add_args(p)
+    add_run_args(p)
     p.add_argument("--out-dir", type=Path, required=True)
     p.add_argument("--peek", default=config.PEEK)
     p.add_argument("--gain", type=float, default=None, help="default: mfdime.config.GAIN for the dataset")
